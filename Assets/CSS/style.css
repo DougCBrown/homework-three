@@ -21,17 +21,21 @@ body {
 	float: right;
 	margin: 0;
 }
+.row {
+	align-content: center;
+}
 .Desc {
 	color: black;
 }
 .btn {
-	background-color: lightslategray;
 	width:80px;
 	height: 30px;
-}
-.footer {
-	background-color: #372323;
+	border-color:gray;
+	border-style: ridge;
+	border-radius: 10px;
+	font-style: italic;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 14px;
 	text-align: center;
-	border-top-left-radius: 50px;
-	color: white;
+	padding: 0;
 }

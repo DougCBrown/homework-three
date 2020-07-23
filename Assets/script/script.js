@@ -29,30 +29,21 @@ generateEl.addEventListener('click', () =>{
 //Generate Password Function
 function generatePassword(upper, lower, number, symbol, length){
 	let generatedPassword = "";
-
 	const typesCount = upper + lower + number + symbol;
-
 	//console.log(typesCount);
-
 	const typesArr = [{upper}, {lower}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-	
 	if(typesCount === 0) {
 		return '';
 	}
-	
 	for(let i=0; i<length; i+=typesCount) {
 		typesArr.forEach(type => {
 			const funcName = Object.keys(type)[0];
 			generatedPassword += randomFunc[funcName]();
 		});
 	}
-	
-	const finalPassword = generatedPassword.slice(0, length);
-
-	
+	const finalPassword = generatedPassword.slice(0, length);	
 	return finalPassword;
 }
-
 // the following function is for uppercase
 function getRandomUpperCase(){
     return String.fromCharCode(Math.floor(Math.random()*26)+65);
