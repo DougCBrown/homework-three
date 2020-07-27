@@ -27,8 +27,9 @@ form.addEventListener('submit', e => {
 })
 function generatePassword(characterAmount, includeUpperCase, includeNumbers, includeSymbols){
 	let charCodes = LOWERCASE_CHAR_CODES
-	if (includeUppercase) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
+	if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)
 	if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
+	if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
 	const passwordCharacters = []
 	for (let i = 0; i < characterAmount; i++) {
 		const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
