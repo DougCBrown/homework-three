@@ -5,39 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./Assets/CSS/style.css">    
+	<link rel="stylesheet" href="./Assets/CSS/style.css"> 
+	<script src="./Assets/script/script.js" defer></script>	   
     <title>Password Generator App</title>
 </head>
-<body>
-	<header class="container">
-		<div>
-				<h1>Password Generator</h1>
-		</div>
-	</header>
-	<section class="container" >
-		<div class="row">
-			<div class="col-md-6">
-				<p id="answer" class="pwd"></p><br>			
-				<button id="copy" class="btn">copy</button><br>
-				<div style="align-content: center;">
-					<p><br/>
-						<label class="Desc">Length :</label>
-						<input type="number" maxlength="100" value="20" id="length" class="pwd"><br/>
-						<label  class="Desc">Check to use UpperCase Letters :</label><input type="checkbox" id="upper" checked class="val"><br>
-						<label  class="Desc">Check to use LowerCase Letters :</label><input type="checkbox" id="lower" checked class="val"><br>
-						<label  class="Desc">Check to use Numbers :</label><input type="checkbox" id="number" checked class="val"><br>
-						<label  class="Desc">Check to use Symbols :</label><input type="checkbox" id="symbol" checked class="val"><br><br>	
-						<button id="generate" class="btn">Generate</button>
-					</p>
+	<body>
+<!--Card container to format the password generator and keep it all aligned-->
+		<div class="container">
+			<h1 class="title">Password Generator</h1>
+			<h3 class="password-display" id="passwordDisplay">password</h3>
+			<form id="passwordGeneratorForm" class="form">
+				<label for="characterAmountNumber">Number of Characters</label>
+				<div class="character-amount-container">
+					<input type="range" min="1" max="50" value="10" id="characterAmountRange"> 
+					<input type="number" class="number-input" min="1" max="50" value="10" id="characterAmountNumber"> 
 				</div>
-			</div>
-		<div>
-	</section>
-	<footer >
-		<br><br>
-		<br><br>
-	</footer>
-	<script src="./Assets/script/script.js"></script>
-</body>
+				<label for="includeUppercase">Include UpperCase</label>
+				<input type="checkbox" id="includeUppercase" checked>
+				<label for="includeNumbers">Include Numbers</label>
+				<input type="checkbox" id="includeNumbers" checked>
+				<label for="includeSymbols">Include Symbols</label>
+				<input type="checkbox" id="includeSymbols" checked>		
+				
+				<button class="btn" type="submit">Generate Password</button>
+
+			</form>
+			
+	</body>
 
 </html>

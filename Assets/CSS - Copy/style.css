@@ -1,0 +1,59 @@
+* {
+	box-sizing: border-box;
+  }
+
+body {
+	font-family: sans-serif;
+	background-color: black;
+	color: white;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container {
+	background-color: #006699;
+	padding: 3rem;
+	border-radius: 1rem;
+	border: 2px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.form{
+	display: grid;
+	grid-template-columns: auto auto;
+	
+}
+
+/*This is the selector input box where you put in your password length 
+.enter {
+	float: rigt;
+	width:40px;
+	height: 20px;
+	color: black;
+}
+.val {
+	float: right;
+	margin: 0;
+}
+.Desc {
+	color: black;
+	float: left;
+	margin: 0;
+}
+
+.btn {
+	width:80px;
+	height: 30px;
+	border-color:gray;
+	border-style: ridge;
+	border-radius: 10px;
+	font-style: italic;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 14px;
+	text-align: center;
+	padding: 0;
+}
+*/

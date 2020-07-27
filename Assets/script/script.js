@@ -1,64 +1,55 @@
-//Communicating with the DOM
+const characterAmountRange = document.getElementById('characterAmountRange')
+const characterAmountNumber = document.getElementById ('characterAmountNumber')
+const form = document.getElementById('passwordGeneratorForm')
+const passwordDisplay = document.getElementById('passwordDisplay')
 
-var answerEl = document.getElementById("answer");
-var lengthEl = document.getElementById("length");
-var numberEl = document.getElementById("number");
-var lowerEl = document.getElementById("lower");
-var upperEl = document.getElementById("upper");
-var symbolEl = document.getElementById("symbol");
-var copyEl = document.getElementById("copy");
-var generateEl = document.getElementById("generate");
+const includeUppercaseElement = document.getElementById('includeUppercase')
+const includeNumbersElement = document.getElementById('includeNumbers')
+const includeSymbolsElement = document.getElementById('includeSymbols')
 
-const randomFunc = {
-	upper : getRandomUpperCase,
-	lower : getRandomLowerCase,
-	number : getRandomNumber,
-	symbol : getRandomSymbol
-};
-//generate event
-generateEl.addEventListener('click', () =>{
-	//const length = parseInt(lengthEl.value);
-	const length = +lengthEl.value;
-	const hasUpper = upperEl.checked;
-	const hasLower = lowerEl.checked;
-	const hasNumber = numberEl.checked;
-	const hasSymbol = symbolEl.checked;
-	answerEl.innerText = generatePassword(hasUpper, hasLower, hasNumber, hasSymbol, length);
-});
+const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
+const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
+const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
+const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
+	arrayFromLowToHigh(58, 64)).concat(
+	arrayFromLowToHigh(91, 96)).concat(arrayFromLowToHigh(123, 126)
+	)
 
-//Generate Password Function
-function generatePassword(upper, lower, number, symbol, length){
-	let generatedPassword = "";
-	const typesCount = upper + lower + number + symbol;
-	//console.log(typesCount);
-	const typesArr = [{upper}, {lower}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-	if(typesCount === 0) {
-		return '';
+characterAmountNumber.addEventListener('input', syncCharacterAmount)
+characterAmountRange.addEventListener('input', syncCharacterAmount)
+
+form.addEventListener('submit', e => {
+	e.preventDefault()
+	const characterAmount = characterAmountNumber.value
+	const includeUppercase = includeUppercaseElement.checked
+	const includeNumbers = includeNumbersElement.checked
+	const includeSymbols = includeSymbolsElement.checked			
+	const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
+	passwordDisplay.innerText = password
+})
+function generatePassword(characterAmount, includeUpperCase, includeNumbers, includeSymbols){
+	let charCodes = LOWERCASE_CHAR_CODES
+	if (includeUppercase) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
+	if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
+	const passwordCharacters = []
+	for (let i = 0; i < characterAmount; i++) {
+		const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+		passwordCharacters.push(String.fromCharCode(characterCode))
 	}
-	for(let i=0; i<length; i+=typesCount) {
-		typesArr.forEach(type => {
-			const funcName = Object.keys(type)[0];
-			generatedPassword += randomFunc[funcName]();
-		});
+	return passwordCharacters.join('')
+}
+
+function arrayFromLowToHigh(low, high){
+	const array = []
+	for (let i = low; i <= high; i++) {
+		array.push(i)
 	}
-	const finalPassword = generatedPassword.slice(0, length);	
-	return finalPassword;
+	return array
 }
-// the following function is for uppercase
-function getRandomUpperCase(){
-    return String.fromCharCode(Math.floor(Math.random()*26)+65);
+
+function syncCharacterAmount(e) {
+
+	const value = e.target.value
+	characterAmountNumber.value = value
+	characterAmountRange.value = value	
 }
-// the following function is for lowercase
-function getRandomLowerCase(){
-    return String.fromCharCode(Math.floor(Math.random()*26)+97);
- }
-// the following function is for numbers
-function getRandomNumber(){
-    return String.fromCharCode(Math.floor(Math.random()*10)+48);
- }
-// the following function is for random symbols
-function getRandomSymbol(){
-	var symbol = "!@#$%^&*(){}[]=<>/,.|~?";
-	return symbol[Math.floor(Math.random()*symbol.length)];
-}
-console.log(getRandomSymbol());
