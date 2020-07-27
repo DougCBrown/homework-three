@@ -10,3 +10,5 @@ clicked, it puts into play the script.js random functions.
 # style.css:
 The stylesheet is being used to define the layout and look of the index page. 
 # script.js: 
+The JavaScript is being used to capture the items the user wants to use for uppercase, numbers and/or symbols
+Lower case characters are a default and don't need to be defined. 

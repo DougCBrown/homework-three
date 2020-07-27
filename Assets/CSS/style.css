@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
   }
-
+/*using the flexbox approach to display a clean user interface*/
 body {
 	font-family: sans-serif;
 	background-color: black;
@@ -21,6 +21,7 @@ body {
 	align-items: center;
 	flex-direction: column;
 }
+/*The form control and grid is being used to handle user input and selections */
 .form{
 	display: grid;
 	grid-template-columns: auto auto;
@@ -43,6 +44,7 @@ body {
 	display: flex;
 	align-items: center;
 }
+/*below is the password display that is created by the password generator */
 .password-display {
 	background-color: white;
 	font-family: Arial, Helvetica, sans-serif;
